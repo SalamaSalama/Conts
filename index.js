@@ -38,10 +38,11 @@ app.get(BASE_API_PATH + "/conts",(req,res) =>{
             console.log(Date() + "-" + err);
             res.sendStatus(500);
         }else{
-            res.send(contacts);
+            res.send(contacts.map((contact) => {
+                delete contact._id;
+                return contact;
+            })); 
         }
-
-
     });
 });
 
