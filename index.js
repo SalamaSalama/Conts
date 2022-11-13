@@ -10,9 +10,6 @@ var conts = [
     {"name":"john","phone":5555}
 ];
 
-
-
-
 console.log("Starting API server...");
 
 var app = express();
