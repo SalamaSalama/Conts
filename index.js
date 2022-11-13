@@ -25,11 +25,27 @@ app.get("/",(req,res) =>{
     res.send("<html><body><h1>My server</h1></body></html>");
 });
 
+
+
 app.get(BASE_API_PATH + "/conts",(req,res) =>{
 
     console.log(Date() + " - GET /conts");
-    res.send([]);
+
+    bd.find({},(err, contacts) => {
+
+
+        if (err){
+            console.log(Date() + "-" + err);
+            res.sendStatus(500);
+        }else{
+            res.send(contacts);
+        }
+
+
+    });
 });
+
+
 
 app.post(BASE_API_PATH + "/conts",(req,res) =>{
 
@@ -37,7 +53,7 @@ app.post(BASE_API_PATH + "/conts",(req,res) =>{
     var cont = req.body;
     bd.insert(contact, (err) => {
         if (err){
-            console.log(Date() + "-" + err);
+            console.log(Date() + " - " + err);
             res.sendStatus(500);
         }else{
             res.sendStatus(201);
