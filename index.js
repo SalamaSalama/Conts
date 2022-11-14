@@ -32,8 +32,6 @@ app.get(BASE_API_PATH + "/conts",(req,res) =>{
     console.log(Date() + " - GET /conts");
 
     bd.find({},(err, contacts) => {
-
-
         if (err){
             console.log(Date() + "-" + err);
             res.sendStatus(500);
@@ -52,7 +50,7 @@ app.post(BASE_API_PATH + "/conts",(req,res) =>{
 
     console.log(Date() + " - POST /conts");
     var cont = req.body;
-    bd.insert(contact, (err) => {
+    bd.insert(cont, (err) => {
         if (err){
             console.log(Date() + " - " + err);
             res.sendStatus(500);
